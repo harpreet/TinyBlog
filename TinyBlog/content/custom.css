@@ -1,0 +1,127 @@
+﻿.hidden
+{
+    -moz-opacity:0; 
+    filter:alpha(opacity=0); 
+    opacity:0; 
+}
+
+table.fieldtable
+{
+   	border-width: 1px 1px 1px 1px;
+	border-spacing: 0px;
+	border-style: solid solid solid solid;
+	border-color: gray gray gray gray;
+	border-collapse: separate;
+	background-color: white; 
+}
+
+table.fieldtable th
+{
+	border-width: 0px 0px 0px 0px;
+	padding: 5px 5px 5px 5px;
+	border-style: inset inset inset inset;
+	border-color: gray gray gray gray;
+	background-color: rgb(255, 255, 240);
+	-moz-border-radius: 0px 0px 0px 0px;   
+}
+
+table.fieldtable td {
+	border-width: 0px 0px 0px 0px;
+	padding: 5px 5px 5px 5px;
+	border-style: inset inset inset inset;
+	border-color: gray gray gray gray;
+	background-color: rgb(255, 255, 240);
+	-moz-border-radius: 0px 0px 0px 0px;
+}
+
+.ulNoBullets
+{
+    list-style:none;
+    margin:0;
+    padding:0px 0px 5px 0px;
+}
+.ulNoBullets li
+{
+    padding-top:4px;
+}
+
+.ulNoBullets li a
+{
+    text-decoration:none;
+}
+.ulNoBullets li a:hover
+{
+    text-decoration:underline;
+}
+
+body
+{
+    padding:10px 0 0 0;
+}
+#header
+{
+    font-size: 300%;
+}
+
+#header a
+{
+    color: #000000;
+    text-decoration:none;
+}
+
+.postTitle
+{
+    font-size: 175%;
+}
+
+.postTitle a
+{
+    text-decoration:none;
+}
+
+.postTitle a:hover
+{
+    text-decoration:underline;
+    color:#000099;
+}
+
+.postDate, .commentDate
+{
+    color:#808080;
+    
+}
+
+.comment
+{
+    border:1px solid #CCCCCC;
+    margin:0 0 1.5em;
+    padding:1.4em;
+}
+.commentBody
+{
+    padding:10px 0px 10px 0px;
+}
+
+.postBody
+{
+    padding:20px 0px 20px 0px;
+}
+
+.postBody p
+{
+    margin: 0px 0px 0px 0px;
+}
+
+#footer
+{
+    background-color: #F5F5F5;
+    margin-top:80px;
+    padding: 20px 60px 60px 60px;
+    width:100%;
+}
+
+.widget
+{
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #D8D8D8
+}

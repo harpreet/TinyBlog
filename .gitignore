@@ -1,0 +1,23 @@
+obj
+bin
+bin/
+Bin
+Bin/
+*.csproj.user
+*ReSharper*
+*resharper*
+*.suo
+*.cache
+*.bak
+*.cache
+*.log
+*.swp
+*.user
+*.tmp
+*.Publish.xml
+_compareTemp
+_notes
+aspnet_client
+httpd.parse.errors
+* Thumbs.db
+~$* 
