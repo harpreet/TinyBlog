@@ -20,4 +20,7 @@ _notes
 aspnet_client
 httpd.parse.errors
 * Thumbs.db
+*.mdf
+*.ldf
+App_Data/
 ~$* 

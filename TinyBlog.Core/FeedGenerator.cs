@@ -9,20 +9,24 @@ namespace TinyBlog.Core
 {
     public class FeedGenerator
     {
+        private readonly string _blogTitle;
+        private readonly string _blogDescription;
 
         private readonly string _siteRoot;
 
-        public FeedGenerator(HttpContextBase context)
+        public FeedGenerator(HttpContextBase context, string blogTitle, string blogDescription)
         {
+            _blogTitle = blogTitle;
+            _blogDescription = blogDescription;
             _siteRoot = SiteRoot(context, true);
         }
 
         public SyndicationFeed Generate(IList<Post> recentPosts)
         {
-            var feed = new SyndicationFeed("blog title", "blog description", new Uri(_siteRoot))
-                           {
-                               Items = ConvertPostsToSyndicationItems(recentPosts)
-                           };
+            var feed = new SyndicationFeed(_blogTitle, _blogDescription, new Uri(_siteRoot))
+            {
+                Items = ConvertPostsToSyndicationItems(recentPosts)
+            };
 
             return feed;
         }
@@ -42,10 +46,10 @@ namespace TinyBlog.Core
 
 
             SyndicationItem syndicationItem = new SyndicationItem(post.Title, post.Body, new Uri(_siteRoot + post.Slug))
-                                                  {
-                                                      PublishDate = post.Published,
-                                                      Title = new TextSyndicationContent(post.Title ?? string.Empty)
-                                                  };
+            {
+                PublishDate = post.Published,
+                Title = new TextSyndicationContent(post.Title ?? string.Empty)
+            };
 
             return syndicationItem;
         }

@@ -10,7 +10,7 @@ using System.ServiceModel.Syndication;
 namespace TinyBlog.Core
 {
 
-    public class ContentService : IContentService 
+    public class ContentService : IContentService
     {
         private readonly ISiteSettingsService _siteSettingsService;
         public IPostRepository PostRepository { get; set; }
@@ -32,7 +32,7 @@ namespace TinyBlog.Core
 
         public int GetPageSize()
         {
-            return PAGE_SIZE; 
+            return PAGE_SIZE;
         }
         private const string filePathExtension = @"\content\media\";
 
@@ -68,7 +68,8 @@ namespace TinyBlog.Core
 
         public SyndicationFeed GetFeed()
         {
-            return new FeedGenerator(Context).Generate(GetPostsPage(1));
+            var settings = _siteSettingsService.GetSiteSettings();
+            return new FeedGenerator(Context, settings.Name, string.Empty).Generate(GetPostsPage(1));
         }
 
         public IList<Comment> GetUnapprovedComments()
@@ -125,8 +126,8 @@ namespace TinyBlog.Core
                 IEnumerable<Tag> tagsThatAlreadyExist = TagRepository.SearchForTags(post.Tags);
 
                 var tagsToReplace = (from newTag in post.Tags
-                                    join t in tagsThatAlreadyExist on newTag.Name equals t.Name
-                                    select newTag).ToList();
+                                     join t in tagsThatAlreadyExist on newTag.Name equals t.Name
+                                     select newTag).ToList();
 
                 foreach (Tag t in tagsToReplace)
                 {
@@ -155,7 +156,7 @@ namespace TinyBlog.Core
             existingPost.Slug = post.Slug;
             existingPost.Tags = post.Tags ?? existingPost.Tags;
             existingPost.Title = post.Title;
-            
+
             PostRepository.SavePost(existingPost);
         }
 
@@ -177,7 +178,7 @@ namespace TinyBlog.Core
                 comment.Created = DateTime.Now;
                 CommentRepository.SaveComment(comment);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return new Failure(ex.Message);
             }
@@ -228,7 +229,7 @@ namespace TinyBlog.Core
 
         public Post CreateNewPost()
         {
-            return new Post {Published = DateTime.Now, CommentsOpen = _siteSettingsService.CommentingEnabled()};
+            return new Post { Published = DateTime.Now, CommentsOpen = _siteSettingsService.CommentingEnabled() };
         }
 
         public IEnumerable<Tag> GetAllTags()
